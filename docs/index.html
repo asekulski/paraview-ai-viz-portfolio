@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Visualization Portfolio — ParaView</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-card: #12122a;
+            --bg-card-hover: #1a1a3a;
+            --accent: #6c63ff;
+            --accent-glow: rgba(108, 99, 255, 0.3);
+            --text-primary: #e8e8f0;
+            --text-secondary: #9898b8;
+            --border: #2a2a4a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, #0d0d2b 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6c63ff, #48c6ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .badge-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            background: #080818;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-body h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .card-body p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .tag-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            background: rgba(108, 99, 255, 0.12);
+            color: #8b85ff;
+            border: 1px solid rgba(108, 99, 255, 0.25);
+        }
+
+        .tech-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .tech-item {
+            padding: 20px;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .tech-item h4 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .tech-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>AI Research Visualization Suite</h1>
+    <p>
+        Scientific visualizations built with ParaView, demonstrating techniques
+        for understanding deep learning models through 3D rendering, volume
+        visualization, and vector field analysis.
+    </p>
+    <div class="badge-row">
+        <span class="badge">ParaView 6.1</span>
+        <span class="badge">Python Scripting</span>
+        <span class="badge">VTK Pipeline</span>
+        <span class="badge">Scientific Viz</span>
+        <span class="badge">AI/ML Research</span>
+    </div>
+</section>
+
+<div class="container">
+    <h2 class="section-title">Visualizations</h2>
+    <p class="section-desc">
+        Each visualization is generated programmatically using ParaView's Python API,
+        from synthetic data through final rendered output.
+    </p>
+
+    <div class="gallery">
+
+        <div class="card">
+            <img class="card-img" src="images/loss_landscape.png"
+                 alt="Neural Network Loss Landscape"
+                 onerror="this.style.background='linear-gradient(135deg,#1a0a3e,#2d1b69)';this.alt='[Run pipeline to generate]'">
+            <div class="card-body">
+                <h3>Neural Network Loss Landscape</h3>
+                <p>
+                    3D surface plot of a multi-modal loss function with local minima,
+                    inspired by loss landscape visualization research (Li et al., 2018).
+                    Color-mapped by loss value and gradient magnitude.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">StructuredGrid</span>
+                    <span class="tag">Surface Rendering</span>
+                    <span class="tag">Color Mapping</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img" src="images/gradient_field.png"
+                 alt="Gradient Descent Vector Field"
+                 onerror="this.style.background='linear-gradient(135deg,#0a1a3e,#1b2d69)';this.alt='[Run pipeline to generate]'">
+            <div class="card-body">
+                <h3>Gradient Descent Flow Field</h3>
+                <p>
+                    Streamline visualization of optimizer trajectories through
+                    a 3D parameter space. Potential iso-surfaces show the energy
+                    landscape that guides gradient descent.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">ImageData</span>
+                    <span class="tag">Streamlines</span>
+                    <span class="tag">Iso-surfaces</span>
+                    <span class="tag">Tubes</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img" src="images/activation_volume.png"
+                 alt="CNN Activation Volume Rendering"
+                 onerror="this.style.background='linear-gradient(135deg,#1a0a2e,#3d1b59)';this.alt='[Run pipeline to generate]'">
+            <div class="card-body">
+                <h3>CNN Activation Volume</h3>
+                <p>
+                    Volume rendering of synthetic 3D activation maps from a
+                    convolutional neural network layer. Custom opacity transfer
+                    function highlights high-activation regions.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">Volume Rendering</span>
+                    <span class="tag">Transfer Functions</span>
+                    <span class="tag">Contour</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img" src="images/embedding_cloud.png"
+                 alt="Embedding Space Point Cloud"
+                 onerror="this.style.background='linear-gradient(135deg,#0a2e1a,#1b5939)';this.alt='[Run pipeline to generate]'">
+            <div class="card-body">
+                <h3>Embedding Space Clusters</h3>
+                <p>
+                    3D point cloud visualization of neural network embeddings,
+                    styled as a t-SNE/UMAP projection. 8 distinct clusters with
+                    per-point confidence coloring via sphere glyphs.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">PolyData</span>
+                    <span class="tag">Glyphs</span>
+                    <span class="tag">Categorical Colors</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="tech-section">
+        <h2 class="section-title">Technical Approach</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h4>Data Generation</h4>
+                <p>NumPy-based synthetic datasets written to VTK XML formats (.vti, .vts, .vtp)</p>
+            </div>
+            <div class="tech-item">
+                <h4>ParaView Pipeline</h4>
+                <p>Programmatic pipelines using paraview.simple API — filters, color maps, camera control</p>
+            </div>
+            <div class="tech-item">
+                <h4>Rendering</h4>
+                <p>High-resolution screenshots at 1920x1080 with custom lighting and backgrounds</p>
+            </div>
+            <div class="tech-item">
+                <h4>VTK Techniques</h4>
+                <p>StreamTracer, Contour, Glyph, Volume Rendering, Transfer Functions</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    Built with <a href="https://www.paraview.org/" target="_blank">ParaView</a> &
+    <a href="https://vtk.org/" target="_blank">VTK</a> |
+    <a href="https://github.com/YOUR_USERNAME/paraview-ai-viz-portfolio" target="_blank">View Source on GitHub</a>
+</footer>
+
+</body>
+</html>
